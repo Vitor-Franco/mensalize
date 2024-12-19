@@ -40,7 +40,17 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
       })
     }
 
+    clearForm()
+
     return payload
+  }
+
+  function clearForm() {
+    setTitle('')
+    setPrice('R$ 0,00')
+    setIsAnnual(false)
+    setCategory('')
+    setDate('')
   }
 
   function handlePrice(value: string) {
