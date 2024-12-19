@@ -1,0 +1,34 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always"
+    },
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always"
+    },
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ts": "explicit",
+    },
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ts": "explicit",
+    },
+    "editor.formatOnSave": true
+  },
+
+}
