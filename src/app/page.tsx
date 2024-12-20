@@ -6,6 +6,7 @@ import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog'
 import { getValueFromBRL, getPrice } from '@/utils/currecy'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export interface Transaction {
@@ -70,7 +71,7 @@ export default function Home() {
   const totalYearly = totalByMonth * 12
 
   return (
-    <main className="bg-gray-100 h-svh">
+    <main className="bg-gray-100 h-svh flex flex-col">
       <header className="bg-teal-700 h-[212px] text-red">
         <div className="container flex items-center justify-between mx-auto pt-8">
           <Logo />
@@ -158,6 +159,21 @@ export default function Home() {
           )}
         </div>
       </section>
+      <footer className="mt-auto bg-gray-200/50">
+        <div className="flex container mx-auto items-center justify-center py-2">
+          <span className="text-xs text-gray-500">
+            Made with ❤️ by{' '}
+            <Link
+              target="_blank"
+              className="underline"
+              href="https://github.com/Vitor-Franco"
+              rel="nofollow"
+            >
+              Vitor Franco
+            </Link>
+          </span>
+        </div>
+      </footer>
     </main>
   )
 }
