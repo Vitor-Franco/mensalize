@@ -31,6 +31,7 @@ export default function Home() {
 
     return []
   })
+  console.log('[LOG] ~ Home ~ transactions:', transactions)
 
   const handledTransactions = transactions.map((transaction) => {
     const value = getValueFromBRL(transaction.price)

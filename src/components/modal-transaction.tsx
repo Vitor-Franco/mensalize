@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import { Checkbox } from '@/components/ui/checkbox'
+import { getPrice } from '@/utils/currecy'
 import { X } from 'lucide-react'
 import { useState } from 'react'
 
@@ -36,7 +37,7 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
 
     if (isAnnual) {
       Object.assign(payload, {
-        price: (handlePrice(price).priceInCents / 12).toFixed(2),
+        price: getPrice(handlePrice(price).priceInCents / 12),
       })
     }
 
