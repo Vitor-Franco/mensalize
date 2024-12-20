@@ -102,6 +102,7 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
             <div className="items-top flex space-x-2">
               <Checkbox
                 id="anual"
+                className=""
                 checked={isAnnual}
                 onCheckedChange={(e) => setIsAnnual(!!e)}
               />
@@ -122,13 +123,21 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
             onChange={(e) => setCategory(e.target.value)}
             className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
           />
-          <input
-            type="date"
-            placeholder="Data da assinatura"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
-          />
+
+          <div>
+            <label className="text-sm text-blue-950" htmlFor="date">
+              Data da cobrança
+            </label>
+            <input
+              id="date"
+              type="date"
+              pattern="dd/mm"
+              placeholder="Data da assinatura"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
+            />
+          </div>
         </div>
       </AlertDialogHeader>
       <AlertDialogFooter>
