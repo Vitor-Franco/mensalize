@@ -16,7 +16,7 @@ export interface Transaction {
   id: string
 }
 
-const storeKey = 'mensalize@transactions'
+const storeKey = '@mensalize::transactions'
 
 export default function Home() {
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
