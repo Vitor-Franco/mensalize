@@ -3,6 +3,7 @@
 import { Logo } from '@/components/logo'
 import { ModalTransaction } from '@/components/modal-transaction'
 import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog'
+import { getValueFromBRL, getPrice } from '@/utils/currecy'
 
 import Image from 'next/image'
 import { useState } from 'react'
@@ -15,7 +16,7 @@ export interface Transaction {
   id: string
 }
 
-const storeKey = 'mensalize@transactions'
+const storeKey = '@mensalize::transactions'
 
 export default function Home() {
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
@@ -28,6 +29,17 @@ export default function Home() {
     }
 
     return []
+  })
+
+  const handledTransactions = transactions.map((transaction) => {
+    const value = getValueFromBRL(transaction.price)
+
+    return {
+      ...transaction,
+      price: getPrice(value),
+      price_yearly: getPrice(value * 12),
+      date: new Date(`${transaction.date}T00:00`).toLocaleDateString('pt-BR'),
+    }
   })
 
   function addTransaction(data: Transaction) {
@@ -50,7 +62,7 @@ export default function Home() {
   }
 
   const totalByMonth = transactions.reduce((acc, transaction) => {
-    const value = Number(transaction.price.replace(',', '.').slice(3))
+    const value = getValueFromBRL(transaction.price)
 
     return acc + value
   }, 0)
@@ -106,23 +118,25 @@ export default function Home() {
         </div>
       </section>
       <section className="container mx-auto mt-16">
-        {transactions.length > 0 && (
-          <div className="grid grid-cols-[350px,1fr,1fr,1fr,1fr] px-8 gap-4 mx-auto">
+        {handledTransactions.length > 0 && (
+          <div className="grid grid-cols-[350px,1fr,1fr,1fr,1fr,1fr] px-8 gap-4 mx-auto">
             <span className="text-gray-500">Título</span>
-            <span className="text-gray-500">Preço</span>
+            <span className="text-gray-500">Preço /mês</span>
+            <span className="text-gray-500">Preço /ano</span>
             <span className="text-gray-500">Categoria</span>
-            <span className="text-gray-500">Data</span>
+            <span className="text-gray-500">Data pagamento</span>
             <span className="text-gray-500">Ações</span>
           </div>
         )}
         <div className="mt-5 space-y-2">
-          {transactions.map((transaction) => (
+          {handledTransactions.map((transaction) => (
             <div
-              className="bg-white rounded-md grid grid-cols-[350px,1fr,1fr,1fr,1fr] gap-4 mx-auto px-8 py-5 items-center"
+              className="bg-white rounded-md grid grid-cols-[350px,1fr,1fr,1fr,1fr,1fr] gap-4 mx-auto px-8 py-5 items-center"
               key={transaction.id}
             >
               <span>{transaction.title}</span>
               <span>{transaction.price}</span>
+              <span>{transaction.price_yearly}</span>
               <span className="text-gray-400">{transaction.category}</span>
               <span className="text-gray-400">{transaction.date}</span>
               <span className="">
@@ -137,7 +151,7 @@ export default function Home() {
             </div>
           ))}
 
-          {transactions.length === 0 && (
+          {handledTransactions.length === 0 && (
             <div className="text-center mt-8 text-gray-500">
               <span>Nenhuma transação cadastrada</span>
             </div>
