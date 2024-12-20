@@ -19,10 +19,12 @@ const storeKey = 'mensalize@transactions'
 
 export default function Home() {
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
-    const data = localStorage.getItem(storeKey)
+    if (typeof window !== 'undefined') {
+      const data = window?.localStorage?.getItem(storeKey)
 
-    if (data) {
-      return JSON.parse(data)
+      if (data) {
+        return JSON.parse(data)
+      }
     }
 
     return []
