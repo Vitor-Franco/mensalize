@@ -69,9 +69,9 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
   }
 
   return (
-    <AlertDialogContent className="bg-gray-50 py-9 px-12">
+    <AlertDialogContent className="bg-gray-50 lg:py-9 lg:px-12">
       <AlertDialogHeader>
-        <AlertDialogCancel className="border-none shadow-none w-fit absolute right-2 top-2">
+        <AlertDialogCancel className="absolute border-none shadow-none w-fit right-2 top-2">
           <X className="text-gray-400" size={20} />
         </AlertDialogCancel>
         <AlertDialogTitle className="font-semibold text-blue-950">
@@ -88,18 +88,18 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
             placeholder="Título"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
+            className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md"
           />
-          <div className="flex gap-4 items-center">
+          <div className="flex flex-col gap-4 lg:items-center lg:flex-row">
             <input
               type="text"
               placeholder="Preço"
               value={price}
               onChange={(e) => setPrice(handlePrice(e.target.value).priceInBRL)}
-              className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 flex-1"
+              className="flex-1 w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md lg:w-auto"
             />
 
-            <div className="items-top flex space-x-2">
+            <div className="flex space-x-2 items-top">
               <Checkbox
                 id="anual"
                 className=""
@@ -109,7 +109,7 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
               <div className="grid gap-1.5 leading-none">
                 <label
                   htmlFor="anual"
-                  className="block text-sm font-medium leading-none flex-1 cursor-pointer text-blue-950"
+                  className="flex-1 block text-sm font-medium leading-none cursor-pointer text-blue-950"
                 >
                   É o preço anual?
                 </label>
@@ -121,12 +121,15 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
             placeholder="Categoria"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
+            className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md"
           />
 
           <div>
-            <label className="text-sm text-blue-950" htmlFor="date">
-              Data da cobrança
+            <label
+              className="block text-sm font-semibold text-left text-blue-950"
+              htmlFor="date"
+            >
+              Dia da cobrança
             </label>
             <input
               id="date"
@@ -135,7 +138,7 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
               placeholder="Data da assinatura"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 w-full"
+              className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md"
             />
           </div>
         </div>
@@ -143,7 +146,7 @@ export function ModalTransaction({ onAdd }: Readonly<ModalTransactionProps>) {
       <AlertDialogFooter>
         <AlertDialogAction
           onClick={() => onAdd(getFormValues())}
-          className="h-14 bg-emerald-500 hover:bg-emerald-600 font-semibold py-4 text-white w-full items-center flex justify-center"
+          className="flex items-center justify-center w-full py-4 font-semibold text-white h-14 bg-emerald-500 hover:bg-emerald-600"
         >
           <span>Adicionar</span>
         </AlertDialogAction>
