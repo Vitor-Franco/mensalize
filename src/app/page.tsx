@@ -59,15 +59,15 @@ export default function Home() {
   const totalYearly = totalMonthly * 12
 
   return (
-    <main className="bg-gray-100 min-h-svh flex flex-col">
+    <main className="flex flex-col bg-gray-100 min-h-svh">
       <Header onAddTransaction={addTransaction} />
-      <section className="flex flex-col lg:flex-row container px-2 mt-4 lg:mt-0 mx-auto gap-4 lg:gap-8">
-        <div className="hover:bg-gray-50 bg-white shadow-md rounded-lg overflow-hidden lg:-mt-20 flex-1 px-12 py-6">
-          <div className="text-blue-950 flex items-center justify-between">
+      <section className="container flex flex-col gap-4 px-2 mx-auto mt-4 lg:flex-row lg:mt-0 lg:gap-8">
+        <div className="flex-1 px-12 py-6 overflow-hidden bg-white rounded-lg shadow-md hover:bg-gray-50 lg:-mt-20">
+          <div className="flex items-center justify-between text-blue-950">
             Mensal
             <Image src="/outcomes.svg" alt="Saída" width={40} height={40} />
           </div>
-          <div className="mt-6 flex justify-between items-end">
+          <div className="flex items-end justify-between mt-6">
             <div className="text-3xl text-blue-950">
               R${' '}
               <span className="font-semibold">
@@ -78,12 +78,12 @@ export default function Home() {
             <span className="">/ao mês</span>
           </div>
         </div>
-        <div className="hover:bg-gray-50 bg-white shadow-md rounded-lg overflow-hidden lg:-mt-20 flex-1 px-12 py-6">
-          <div className="text-blue-950 flex items-center justify-between">
+        <div className="flex-1 px-12 py-6 overflow-hidden bg-white rounded-lg shadow-md hover:bg-gray-50 lg:-mt-20">
+          <div className="flex items-center justify-between text-blue-950">
             Anual
             <Image src="/outcomes.svg" alt="Saída" width={40} height={40} />
           </div>
-          <div className="mt-6 flex justify-between items-end">
+          <div className="flex items-end justify-between mt-6">
             <div className="text-3xl text-blue-950">
               R${' '}
               <span className="font-semibold">
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container px-2 mx-auto mt-16 overflow-x-auto mb-8">
+      <section className="container px-2 mx-auto mt-16 mb-8 overflow-x-auto">
         <TableTransactions
           transactions={transactions}
           onDelete={(id) => deleteTransaction(id)}

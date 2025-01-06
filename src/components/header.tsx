@@ -12,11 +12,11 @@ interface HeaderProps {
 function Header({ onAddTransaction }: Readonly<HeaderProps>) {
   return (
     <header className="bg-teal-700 lg:h-[212px] text-red">
-      <div className="container px-2 flex items-center justify-between mx-auto py-8 lg:pb-0 lg:pt-8">
+      <div className="container flex items-center justify-between px-2 py-8 mx-auto lg:pb-0 lg:pt-8">
         <Logo />
 
         <AlertDialog>
-          <AlertDialogTrigger className="shadow bg-emerald-600 text-white px-4 py-2 rounded font-semibold">
+          <AlertDialogTrigger className="px-4 py-2 font-semibold text-white rounded shadow bg-emerald-600">
             <span>Nova mensalidade</span>
           </AlertDialogTrigger>
           <ModalTransaction onAdd={onAddTransaction} />

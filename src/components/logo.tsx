@@ -77,7 +77,7 @@ export function Logo() {
         </defs>
       </svg>
 
-      <span className="font-semibold capitalize text-white mb-2">
+      <span className="mb-2 font-semibold text-white capitalize">
         mensalize
       </span>
     </div>
