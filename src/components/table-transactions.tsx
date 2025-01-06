@@ -39,7 +39,7 @@ function TableTransactions({
       <div className="mt-5 space-y-2">
         {handledTransactions.map((transaction) => (
           <div
-            className="bg-white w-fit hover:bg-gray-50 rounded-md grid grid-cols-[150px,150px,150px,150px,150px,150px] lg:grid-cols-[350px,1fr,1fr,1fr,1fr,1fr] gap-4 mx-auto px-8 py-5 items-center"
+            className="bg-white w-fit lg:w-full hover:bg-gray-50 rounded-md grid grid-cols-[150px,150px,150px,150px,150px,150px] lg:grid-cols-[350px,1fr,1fr,1fr,1fr,1fr] gap-4 mx-auto px-8 py-5 items-center"
             key={transaction.id}
           >
             <span className="text-ellipsis line-clamp-1">
